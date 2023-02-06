@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@Deprecated
 public class Credential implements Serializable {
 
     @Id
