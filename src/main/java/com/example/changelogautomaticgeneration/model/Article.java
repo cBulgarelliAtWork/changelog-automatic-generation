@@ -21,4 +21,6 @@ public class Article implements Serializable {
     @Column(name = "description", unique = true, nullable = false, length = 256)
     @NotNull
     private String description;
+    @Column(name = "visible", nullable = false)
+    private boolean visible;
 }
