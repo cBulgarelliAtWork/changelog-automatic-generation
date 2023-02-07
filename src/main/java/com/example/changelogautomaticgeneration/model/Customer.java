@@ -25,6 +25,8 @@ public class Customer implements Serializable {
     private String name;
     @Column(name = "phone", length = 64)
     private String phone;
+    @Column(name = "email", length = 64)
+    private String email;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Address> address;
 }
