@@ -26,7 +26,7 @@ public class ContactMethod implements Serializable {
     @Column(name = "value", nullable = false, length = 128)
     @NotEmpty
     private String value;
-    @Column(name = "descriptionnnnnnnn", nullable = false, length = 128)
+    @Column(name = "description", nullable = false, length = 128)
     @NotEmpty
     private String description;
     @ManyToOne(optional = false)
