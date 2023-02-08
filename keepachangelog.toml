@@ -19,7 +19,7 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
-        - {{ commit.message | upper_first }}\
+        - {% if commit.breaking %}[**breaking**] {% endif %}{{ commit.message | upper_first }}\
     {% endfor %}
 {% endfor %}\n
 """
@@ -41,7 +41,7 @@ split_commits = false
 # regex for parsing and grouping commits
 commit_parsers = [
 #    { message = "^.*: add", group = "Added"},
-    { message = "^[a|A]dd:.*", group = "Added"},
+    { message = "^[a|A]dd!?:.*", group = "Added"},
 #    { message = "^.*: support", group = "Added"},
     { message = "^[s|S]upport:.*", group = "Added"},
 #    { message = "^.*: deprecate", group = "Deprecated"},
