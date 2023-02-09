@@ -41,28 +41,35 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
 
-      - name: Generate a changelog
-        uses: orhun/git-cliff-action@v2
-        id: git-cliff
-        with:
-          config: keepachangelog.toml
-          args: --tag ${{ github.ref_name }} --verbose
-        env:
-          OUTPUT: CHANGELOG.md
+      - name: Set up git-cliff
+        uses: kenji-miyake/setup-git-cliff@v1
 
-      - name: Print the changelog
-        run: cat "${{ steps.git-cliff.outputs.changelog }}"
+      - name: Run git-cliff
+        run: |
+          git cliff --config=keepachangelog.toml --tag ${{ github.ref_name }}
 
-      - name: Push Changelog
-        run:
-          git commit -am "generate changelog for version ${{ github.ref_name }}" --;
-          git push;
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+#      - name: Generate a changelog
+#        uses: orhun/git-cliff-action@v2
+#        id: git-cliff
+#        with:
+#          config: keepachangelog.toml
+#          args: --tag ${{ github.ref_name }} --verbose
+#        env:
+#          OUTPUT: CHANGELOG.md
+#
+#      - name: Print the changelog
+#        run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
-      - name: Create GitHub release
-        uses: docker://antonyurchenko/git-release:latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: target/*.jar
+#      - name: Push Changelog
+#        run:
+#          git commit -am "generate changelog for version ${{ github.ref_name }}" --;
+#          git push;
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#
+#      - name: Create GitHub release
+#        uses: docker://antonyurchenko/git-release:latest
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          args: target/*.jar
