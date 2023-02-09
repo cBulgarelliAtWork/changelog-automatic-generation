@@ -46,6 +46,8 @@ jobs:
 
       - name: Run git-cliff
         run: |
+          ls -la; |
+          git log --pretty --oneline -10; |
           git cliff --config=keepachangelog.toml --tag ${{ github.ref_name }}
 
 #      - name: Generate a changelog
