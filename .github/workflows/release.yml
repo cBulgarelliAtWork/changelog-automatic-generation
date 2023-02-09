@@ -40,6 +40,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v2
+        with:
+          config: keepachangelog.toml
+          args: --tag ${{ github.ref_name }}
+        env:
+          OUTPUT: CHANGELOG.md
+
+      - name: Push Changelog
+        run:
+          git commit -am "generate changelog for version ${{ github.ref_name }}" --;
+          git push;
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
       - name: Create GitHub release
         uses: docker://antonyurchenko/git-release:latest
         env:
