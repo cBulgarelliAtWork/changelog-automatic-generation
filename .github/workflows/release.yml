@@ -46,7 +46,7 @@ jobs:
         id: git-cliff
         with:
           config: keepachangelog.toml
-          args: --tag ${{ github.ref_name }}
+          args: --tag ${{ github.ref_name }} --verbose
         env:
           OUTPUT: CHANGELOG.md
 
