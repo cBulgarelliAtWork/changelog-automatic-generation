@@ -16,8 +16,6 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Cache local Maven repository
         uses: actions/cache@v3
@@ -42,11 +40,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Checkout head
-        run: |
-          git checkout HEAD
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: Checkout sources
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: $(git rev-parse ${{ github.ref_name }}~0 | git branch --contains | tail -n 1)
 
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v2
