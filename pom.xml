@@ -17,6 +17,13 @@
         <java.version>17</java.version>
         <revision>1.0-SNAPSHOT</revision>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cBulgarelliAtWork/changelog-automatic-generation</url>
+        </repository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
