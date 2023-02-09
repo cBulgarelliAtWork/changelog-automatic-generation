@@ -43,11 +43,15 @@ jobs:
 
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v2
+        id: git-cliff
         with:
           config: keepachangelog.toml
           args: --tag ${{ github.ref_name }}
         env:
           OUTPUT: CHANGELOG.md
+
+      - name: Print the changelog
+        run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
       - name: Push Changelog
         run:
