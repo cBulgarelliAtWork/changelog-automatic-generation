@@ -46,7 +46,7 @@ jobs:
         run: |
           SHA1=$(git rev-parse ${{ github.ref_name }}~0)
           echo "SHA1 = $SHA1"
-          TMP=git branch --contains $SHA1
+          TMP=$(git branch --contains $SHA1)
           echo "TMP = $TMP"
           BRANCH=$(git rev-parse ${{ github.ref_name }}~0 | git branch --contains | tail -n 1)
           echo "branch to checkout: $BRANCH"
