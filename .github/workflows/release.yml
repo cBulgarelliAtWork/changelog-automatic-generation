@@ -43,6 +43,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: Checkout head
+        run: |
+          git checkout HEAD
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v2
         id: git-cliff
@@ -55,19 +61,20 @@ jobs:
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
-      - name: Push Changelog
+      - name: commit Changelog
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Github action"
           git commit -am "generate changelog for version ${{ github.ref_name }}" --
+          git push
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: ${{ github.ref_name }}
 #
 #      - name: Create GitHub release
 #        uses: docker://antonyurchenko/git-release:latest
