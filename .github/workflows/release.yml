@@ -89,10 +89,12 @@ jobs:
           grip -V
           # from GC-NNN to [GC-NNN](<JIRA link>)
           sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
-          cat ./CHANGELOG.tmp
-#          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
-#          grip ./CHANGELOG.md --export ./CHANGELOG_grip.html
-#
+          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
+          echo "generating CHANGELOG.html..."
+          grip ./CHANGELOG.md --export ./CHANGELOG.html
+          echo "...done"
+          cat ./CHANGELOG.html
+
 #      - name: Print the CHANGELOG_grip.html
 #        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
 #
