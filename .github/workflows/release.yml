@@ -111,7 +111,6 @@ jobs:
             -t html
             --standalone
             --output=CHANGELOG_pandoc.html
-            --metadata=title:'Changelog ${{ github.ref_name }}'
             CHANGELOG.md
 
       - name: Print the CHANGELOG_pandoc.html
