@@ -70,13 +70,13 @@ jobs:
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
-#          sudo apt-get update -y
-#          sudo apt-get install -y grip
-      - name: Install grip to generate CHANGELOG.html from CHANGELOG.md
+#          git clone https://github.com/joeyespo/grip
+#          grip/grip -V
+      - name: Install grip to generate CHANGELOG_grip.html from CHANGELOG.md
         run: |
           echo "grip installation in progress..."
-          git clone https://github.com/joeyespo/grip
-          grip/grip -V
+          sudo apt-get update -y
+          sudo apt-get install -y grip
           echo "...done"
 
       - name: Generate a changelog in html format
@@ -87,19 +87,20 @@ jobs:
           echo "JIRA url: $JIRA_URL"
           ls -a
           grip -V
-#          # from GC-NNN to [GC-NNN](<JIRA link>)
-#          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
+          # from GC-NNN to [GC-NNN](<JIRA link>)
+          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
+          cat ./CHANGELOG.tmp
 #          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
-#          grip ./CHANGELOG.md --export ./CHANGELOG.html
+#          grip ./CHANGELOG.md --export ./CHANGELOG_grip.html
 #
-#      - name: Print the CHANGELOG.html
+#      - name: Print the CHANGELOG_grip.html
 #        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
 #
 #      - name: commit Changelog
 #        run: |
 #          git config user.name github-actions
 #          git config user.email github-actions@github.com
-#          git add CHANGELOG.md CHANGELOG.html
+#          git add CHANGELOG.md CHANGELOG_grip.html
 #          git commit -m "generate changelog for version ${{ github.ref_name }}"
 #          git push
 
