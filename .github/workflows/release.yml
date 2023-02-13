@@ -14,9 +14,15 @@ jobs:
       packages: write
 
     steps:
+      - name: Git configuration
+        run: |
+          echo "Setting the initial branch name to main"
+          git config --global init.defaultBranch main
       - name: Checkout sources
         uses: actions/checkout@v3
         with:
+          # checkout the main branch
+          ref: 'main'
           fetch-depth: 0
 
       - name: Cache local Maven repository
@@ -42,15 +48,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Checkout head of current branch
-        run: |
-          SHA1=$(git rev-parse ${{ github.ref_name }}~0)
-          echo "SHA1 = $SHA1"
-          TMP=$(git branch --contains $SHA1)
-          echo "TMP = $TMP"
-          BRANCH=$(git rev-parse ${{ github.ref_name }}~0 | git branch --contains | tail -n 1)
-          echo "branch to checkout: $BRANCH"
-          git checkout $BRANCH
+#      - name: Checkout head of current branch
+#        run: |
+#          SHA1=$(git rev-parse ${{ github.ref_name }}~0)
+#          echo "SHA1 = $SHA1"
+#          TMP=$(git branch --contains $SHA1)
+#          echo "TMP = $TMP"
+#          BRANCH=$(git rev-parse ${{ github.ref_name }}~0 | git branch --contains | tail -n 1)
+#          echo "branch to checkout: $BRANCH"
+#          git checkout $BRANCH
 
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v2
