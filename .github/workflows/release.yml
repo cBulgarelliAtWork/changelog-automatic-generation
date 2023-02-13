@@ -55,7 +55,7 @@ jobs:
 #          TMP=$(git branch --contains $SHA1)
 #          echo "TMP = $TMP"
 #          BRANCH=$(git rev-parse ${{ github.ref_name }}~0 | git branch --contains | tail -n 1)
-#          echo "branch to checkout: $BRANCH"
+#          echo "branch to check out: $BRANCH"
 #          git checkout $BRANCH
 
       - name: Generate a changelog
