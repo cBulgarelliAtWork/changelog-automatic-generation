@@ -38,6 +38,10 @@ jobs:
       - name: Build and Deploy
         run: |
           REVISION=$(echo ${{ github.ref_name }} | sed -E "s/v(.+)/\1/")
+          echo "--HOME--"
+          dirname ~/.m2
+          echo "--MAVEN REPO CONTENT--"
+          ls -a ~/.m2/repository
           echo "---MAVEN VERSION---"
           mvn -X
           mvn deploy -B -Drevision=$REVISION -s $GITHUB_WORKSPACE/settings.xml
