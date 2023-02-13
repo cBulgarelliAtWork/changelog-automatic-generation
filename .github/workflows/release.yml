@@ -70,6 +70,13 @@ jobs:
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
+      - name: Install grip to generate CHANGELOG.html from CHANGELOG.md
+        run: |
+          echo "grip installation in progress...
+          sudo apt-get update -y
+          sudo apt-get install -y grip
+          echo "...done"
+
       - name: Generate a changelog in html format
         id: generate-changelog-html
         run: |
