@@ -83,21 +83,22 @@ jobs:
           JIRA_URL="https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail\&selectedIssue="
           echo "the CHANGELOG.html file will be updated"
           echo "JIRA url: $JIRA_URL"
-          # from GC-NNN to [GC-NNN](<JIRA link>)
-          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
-          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
-          grip ./CHANGELOG.md --export ./CHANGELOG.html
-
-      - name: Print the CHANGELOG.html
-        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
-
-      - name: commit Changelog
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add CHANGELOG.md CHANGELOG.html
-          git commit -m "generate changelog for version ${{ github.ref_name }}"
-          git push
+          ls -a
+#          # from GC-NNN to [GC-NNN](<JIRA link>)
+#          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
+#          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
+#          grip ./CHANGELOG.md --export ./CHANGELOG.html
+#
+#      - name: Print the CHANGELOG.html
+#        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
+#
+#      - name: commit Changelog
+#        run: |
+#          git config user.name github-actions
+#          git config user.email github-actions@github.com
+#          git add CHANGELOG.md CHANGELOG.html
+#          git commit -m "generate changelog for version ${{ github.ref_name }}"
+#          git push
 
 #      - name: Push changes
 #        uses: ad-m/github-push-action@master
