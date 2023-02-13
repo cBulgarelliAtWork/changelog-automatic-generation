@@ -69,6 +69,7 @@ jobs:
 
       - name: Update changelog JIRA references as links
         run: |
+          JIRA_URL="https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail\&selectedIssue="
           # from GC-NNN to [GC-NNN](<JIRA link>)
           sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
           mv -f ./CHANGELOG.tmp ./CHANGELOG.md
