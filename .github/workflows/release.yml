@@ -84,6 +84,7 @@ jobs:
           echo "the CHANGELOG.html file will be updated"
           echo "JIRA url: $JIRA_URL"
           ls -a
+          grip -V
 #          # from GC-NNN to [GC-NNN](<JIRA link>)
 #          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
 #          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
