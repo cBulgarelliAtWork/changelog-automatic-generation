@@ -73,8 +73,10 @@ jobs:
       - name: Install grip to generate CHANGELOG.html from CHANGELOG.md
         run: |
           echo "grip installation in progress..."
-          sudo apt-get update -y
-          sudo apt-get install -y grip
+#          sudo apt-get update -y
+#          sudo apt-get install -y grip
+          git clone https://github.com/joeyespo/grip
+               grip/grip -V
           echo "...done"
 
       - name: Generate a changelog in html format
