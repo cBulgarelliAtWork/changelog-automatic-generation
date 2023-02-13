@@ -76,7 +76,7 @@ jobs:
 #          sudo apt-get update -y
 #          sudo apt-get install -y grip
           git clone https://github.com/joeyespo/grip
-               grip/grip -V
+          grip/grip -V
           echo "...done"
 
       - name: Generate a changelog in html format
