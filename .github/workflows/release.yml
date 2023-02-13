@@ -99,6 +99,11 @@ jobs:
 #      - name: Print the CHANGELOG_grip.html
 #        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
 
+      - name: pandoc_env
+        run: |
+          echo "::set-input name=file::CHANGELOG.md)"
+          echo "::set-output name=file::CHANGELOG_pandoc.html)"
+
       - name: convert_via_pandoc
         uses: docker://pandoc/core:2.9
         with:
@@ -106,11 +111,11 @@ jobs:
             -f markdown
             -t html
             --standalone
-            --output=CHANGELOG_pandoc.html
-            CHANGELOG.md
+            --output=${{ steps.pandoc_env.outputs.file }}
+            ${{ steps.pandoc_env.inputs.file }}
 
-      - name: Print the CHANGELOG_grip.html
-        run: cat "${{ steps.convert_via_pandoc.outputs.changelog }}"
+      - name: Print the CHANGELOG_pandoc.html
+        run: cat "${{ steps.pandoc_env.outputs.file }}"
 #
 #      - name: commit Changelog
 #        run: |
