@@ -67,6 +67,12 @@ jobs:
         env:
           OUTPUT: CHANGELOG.md
 
+      - name: Update changelog JIRA references as links
+        run: |
+          # from GC-NNN to [GC-NNN](<JIRA link>)
+          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
+          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
+
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
@@ -103,8 +109,8 @@ jobs:
 #        run: |
 #          echo "file=CHANGELOG_pandoc.html" >> $GITHUB_OUTPUT
 
-      - name: convert_via_pandoc
-        uses: docker://pandoc/core:2.9
+      - name: Generate a changelog in html format using pandoc
+        uses: docker://pandoc/core:3.1
         with:
           args: >-  # allows you to break string into multiple lines
             -f markdown
