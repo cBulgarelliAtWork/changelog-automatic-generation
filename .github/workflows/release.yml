@@ -70,33 +70,48 @@ jobs:
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
-#          git clone https://github.com/joeyespo/grip
-#          grip/grip -V
-      - name: Install grip to generate CHANGELOG_grip.html from CHANGELOG.md
-        run: |
-          echo "grip installation in progress..."
-          sudo apt-get update -y
-          sudo apt-get install -y grip
-          echo "...done"
-
-      - name: Generate a changelog in html format
-        id: generate-changelog-html
-        run: |
-          JIRA_URL="https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail\&selectedIssue="
-          echo "the CHANGELOG.html file will be updated"
-          echo "JIRA url: $JIRA_URL"
-          ls -a
-          grip -V
-          # from GC-NNN to [GC-NNN](<JIRA link>)
-          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
-          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
-          echo "generating CHANGELOG.html..."
-          grip ./CHANGELOG.md --export ./CHANGELOG.html
-          echo "...done"
-          cat ./CHANGELOG.html
-
+##          git clone https://github.com/joeyespo/grip
+##          grip/grip -V
+#      - name: Install grip to generate CHANGELOG_grip.html from CHANGELOG.md
+#        run: |
+#          echo "grip installation in progress..."
+#          sudo apt-get update -y
+#          sudo apt-get install -y grip
+#          echo "...done"
+#
+#      - name: Generate a changelog in html format using grip
+#        id: generate-changelog-html
+#        run: |
+#          JIRA_URL="https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail\&selectedIssue="
+#          echo "the CHANGELOG.html file will be updated"
+#          echo "JIRA url: $JIRA_URL"
+#          ls -a
+#          grip -V
+#          # from GC-NNN to [GC-NNN](<JIRA link>)
+#          sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" ./CHANGELOG.md >./CHANGELOG.tmp
+#          mv -f ./CHANGELOG.tmp ./CHANGELOG.md
+#          echo "generating CHANGELOG.html..."
+#          grip ./CHANGELOG.md --export ./CHANGELOG.
+#          # endless wait.... :-(
+#          echo "...done"
+#          cat ./CHANGELOG.html
+#
 #      - name: Print the CHANGELOG_grip.html
 #        run: cat "${{ steps.generate-changelog-html.outputs.changelog }}"
+
+      - name: convert_via_pandoc
+        run: echo "foo" > input.txt  # create an example file
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-  # allows you to break string into multiple lines
+            -f markdown
+            -t html
+            --standalone
+            --output=CHANGELOG_pandoc.html
+            CHANGELOG.md
+
+      - name: Print the CHANGELOG_grip.html
+        run: cat "${{ steps.convert_via_pandoc.outputs.changelog }}"
 #
 #      - name: commit Changelog
 #        run: |
