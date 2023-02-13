@@ -115,13 +115,12 @@ jobs:
             CHANGELOG.md
 
       - name: Print the CHANGELOG_pandoc.html
-        run: cat "CHANGELOG_pandoc.html"
+        run: cat CHANGELOG_pandoc.html
 
       - name: commit Changelog
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-#          git add CHANGELOG.md CHANGELOG_grip.html
           git add CHANGELOG.md CHANGELOG_pandoc.html
           git commit -m "generate changelog for version ${{ github.ref_name }}"
           git push
