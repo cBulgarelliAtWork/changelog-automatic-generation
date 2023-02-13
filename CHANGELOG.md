@@ -1,8 +1,140 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [1.0.51] - 2023-02-13
+
+### Changed
+
+- Changelog push 34th try (debugging the CHANGELOG.html generation)
+
+## [1.0.50] - 2023-02-13
+
+### Changed
+
+- Changelog push 33rd try (debugging the CHANGELOG.html generation)
+
+## [1.0.49] - 2023-02-13
+
+### Changed
+
+- Changelog push 32nd try (debugging the CHANGELOG.html generation)
+
+## [1.0.48] - 2023-02-13
+
+### Changed
+
+- Changelog push 31st try (debugging the CHANGELOG.html generation)
+
+## [1.0.47] - 2023-02-13
+
+### Changed
+
+- Changelog push 30th try (debugging the CHANGELOG.html generation)
+
+## [1.0.46] - 2023-02-13
+
+### Changed
+
+- Changelog push 29th try (debugging the CHANGELOG.html generation)
+
+## [1.0.45] - 2023-02-13
+
+### Changed
+
+- Changelog push 28th try (debugging the CHANGELOG.html generation)
+
+## [1.0.44] - 2023-02-13
+
+### Changed
+
+- Changelog push 27th try (debugging the CHANGELOG.html generation)
+
+## [1.0.43] - 2023-02-13
+
+### Changed
+
+- Changelog push 26th try (debugging the CHANGELOG.html generation)
+
+## [1.0.42] - 2023-02-13
+
+### Changed
+
+- Changelog push 25th try (debugging the CHANGELOG.html generation)
+
+## [1.0.41] - 2023-02-13
+
+### Changed
+
+- Changelog push 24th try (debugging the CHANGELOG.html generation)
+
+## [1.0.40] - 2023-02-13
+
+### Changed
+
+- Changelog push 23rd try (debugging the CHANGELOG.html generation)
+
+## [1.0.39] - 2023-02-13
+
+### Changed
+
+- Changelog push 21st try (debugging the CHANGELOG.html generation)
+- Changelog push 22nd try (debugging the CHANGELOG.html generation)
+
+## [1.0.37] - 2023-02-13
+
+### Changed
+
+- Changelog push 20th try (debugging the CHANGELOG.html generation)
+
+## [1.0.36] - 2023-02-13
+
+### Changed
+
+- Changelog push 19th try (debugging the CHANGELOG.html generation)
+
+## [1.0.35] - 2023-02-13
+
+### Changed
+
+- Changelog push 18th try (debugging the CHANGELOG.html generation)
+
+## [1.0.34] - 2023-02-13
+
+### Changed
+
+- Changelog push 17th try (debugging the CHANGELOG.html generation)
+
+## [1.0.33] - 2023-02-13
+
+### Changed
+
+- Changelog push 16th try (debugging the CHANGELOG.html generation)
+
+## [1.0.32] - 2023-02-13
+
+### Changed
+
+- Changelog push 15th try (debugging the CHANGELOG.html generation)
+
+## [1.0.31] - 2023-02-13
+
+### Changed
+
+- Changelog push 14th try (installing grip to generate CHANGELOG.html)
+
+## [1.0.30] - 2023-02-13
+
+### Changed
+
+- Changelog push 13th try (installing grip to generate CHANGELOG.html)
+
+## [1.0.29] - 2023-02-13
+
+### Changed
+
+- Changelog push 12th try (generate and push CHANGELOG.html)
 
 ## [1.0.28] - 2023-02-13
 
