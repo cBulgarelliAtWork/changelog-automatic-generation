@@ -60,6 +60,8 @@ jobs:
 
       - name: Checkout head of current branch
         run: |
+          SHA1=$(git rev-parse ${{ github.ref_name }}~0)
+          echo "SHA1: $SHA1"
           BRANCH=$(git name-rev --name-only $SHA1)
           echo "branch to check out: $BRANCH"
           git checkout $BRANCH
