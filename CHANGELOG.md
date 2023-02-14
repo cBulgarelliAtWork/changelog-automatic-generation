@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.57] - 2023-02-14
+
+### Added
+
+- [**breaking**] [GC-012](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-012) store model class
+- [GC-013](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-013) brand model class
+
 ## [1.0.56] - 2023-02-14
 
 ### Changed
@@ -336,9 +343,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - [GC-008](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-008) customer change model classes
 - [GC-009](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-009) git-cliff script to generate CHANGELOG.md
 - [**breaking**] [GC-010](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-010) customer contact methods
+- [**breaking**] [GC-010](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-010) customer contact methods
 
 ### Fixed
 
+- Description for contact methods
 - [GC-011](https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail&selectedIssue=GC-011) keep a change configuration now supports breaking changes in commits messages
 - Description for contact methods
 
