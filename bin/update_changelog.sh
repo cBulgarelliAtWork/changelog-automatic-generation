@@ -1,4 +1,5 @@
 #!/bin/bash
+JIRA_URL="https://overit-spa.atlassian.net/jira/software/c/projects/GC/boards/450?modal=detail\&selectedIssue="
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 COMMAND="git cliff -w $SCRIPT_DIR/.."
 clear
@@ -109,4 +110,20 @@ esac
 echo "
 =================================
 $COMMAND"
+START_TIME=$(date +%s)
 $COMMAND
+END_TIME=$(date +%s)
+echo "It took $(($END_TIME - $START_TIME)) seconds to generate the CHANGELOG.md..."
+case "$UPDATE_FILE" in
+  2)
+    echo "the CHANGELOG.html file will be updated"
+    echo $JIRA_URL
+    # from GC-NNN to [GC-NNN](<JIRA link>)
+    sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" $SCRIPT_DIR/../CHANGELOG.md >$SCRIPT_DIR/../CHANGELOG.tmp
+    mv -f $SCRIPT_DIR/../CHANGELOG.tmp $SCRIPT_DIR/../CHANGELOG.md
+#    grip $SCRIPT_DIR/../CHANGELOG.md --export $SCRIPT_DIR/../CHANGELOG.html
+    pandoc -f markdown -t html --standalone --output=CHANGELOG_pandoc.html $SCRIPT_DIR/../CHANGELOG.md
+    ;;
+  *)
+    ;;
+esac
