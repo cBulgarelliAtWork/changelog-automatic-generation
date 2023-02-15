@@ -121,8 +121,8 @@ case "$UPDATE_FILE" in
     # from GC-NNN to [GC-NNN](<JIRA link>)
     sed "s@\(GC-\)\([0-9]*\)@\[\\1\\2\]\($JIRA_URL\\1\\2\)@" $SCRIPT_DIR/../CHANGELOG.md >$SCRIPT_DIR/../CHANGELOG.tmp
     mv -f $SCRIPT_DIR/../CHANGELOG.tmp $SCRIPT_DIR/../CHANGELOG.md
-    grip $SCRIPT_DIR/../CHANGELOG.md --export $SCRIPT_DIR/../CHANGELOG.html
-#    sed "s/\(GC-\)\([0-9]*\)/\<a href=\"https:\/\/overit-spa.atlassian.net\/jira\/software\/c\/projects\/GC\/boards\/\\2\?modal=detail\&selectedIssue=\\1\\2\">\\1\\2\<\/a\>/" $SCRIPT_DIR/../CHANGELOG.html > $SCRIPT_DIR/../CHANGELOG.html
+#    grip $SCRIPT_DIR/../CHANGELOG.md --export $SCRIPT_DIR/../CHANGELOG.html
+    pandoc -f markdown -t html --standalone --output=CHANGELOG_pandoc.html $SCRIPT_DIR/../CHANGELOG.md
     ;;
   *)
     ;;
