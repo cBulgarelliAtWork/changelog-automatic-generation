@@ -10,12 +10,20 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>changelog-automatic-generation</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>changelog-automatic-generation</name>
     <description>Project to test the automatic changelog generation from git history by git cliff</description>
     <properties>
         <java.version>17</java.version>
+        <revision>1.0-SNAPSHOT</revision>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cBulgarelliAtWork/changelog-automatic-generation</url>
+        </repository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
