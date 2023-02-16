@@ -35,7 +35,7 @@ esac
 
 echo "
 =========================================================
-Choose if process the commits that do not belong to a tag
+Choose if process ONLY the commits that do not belong to a tag
 1 - Yes
 2 - No
 "
