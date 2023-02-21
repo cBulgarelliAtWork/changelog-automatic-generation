@@ -41,23 +41,23 @@ split_commits = false
 # regex for parsing and grouping commits
 commit_parsers = [
 #    { message = "^.*: add", group = "Added"},
-    { message = "^[a|A]dd:.*", group = "Added"},
+    { message = "^[aA]dd:.*", group = "Added"},
 #    { message = "^.*: support", group = "Added"},
-    { message = "^[s|S]upport:.*", group = "Added"},
+    { message = "^[sS]upport:.*", group = "Added"},
 #    { message = "^.*: deprecate", group = "Deprecated"},
-    { message = "^[d|D]eprecate:.*", group = "Deprecated"},
+    { message = "^[dD]eprecate:.*", group = "Deprecated"},
 #    { message = "^.*: remove", group = "Removed"},
-    { message = "^[r|R]emove:.*", group = "Removed"},
+    { message = "^[rR]emove:.*", group = "Removed"},
 #    { message = "^.*: delete", group = "Removed"},
-    { message = "^[d|D]elete:.*", group = "Removed"},
+    { message = "^[dD]elete:.*", group = "Removed"},
 #    { message = "^test", group = "Fixed"},
-    { message = "^[t|T]est", group = "Fixed"},
+    { message = "^[tT]est", group = "Fixed"},
 #    { message = "^fix", group = "Fixed"},
-    { message = "^[f|F]ix", group = "Fixed"},
+    { message = "^[fF]ix", group = "Fixed"},
 #    { message = "^.*: sec", group = "Security"},
-    { message = "^[s|S]ec", group = "Security"},
+    { message = "^[sS]ec", group = "Security"},
 #    { message = "^.*", group = "Changed"},
-    { message = "^[c|C]hange:.*", group = "Changed"},
+    { message = "^[cC]hange:.*", group = "Changed"},
 ]
 # protect breaking changes from being skipped due to matching a skipping commit_parser
 protect_breaking_commits = false
