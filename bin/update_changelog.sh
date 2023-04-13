@@ -5,10 +5,10 @@ COMMAND="git cliff -w $SCRIPT_DIR/.."
 clear
 
 echo "
-3 2 1 <tag> 1 => CHANGELOG.md NOT UPDATED WITH COMPLETE COMMITS LIST
-3 2 1 <tag> 2 => CHANGELOG.md UPDATED WITH COMPLETE COMMITS LIST
-2 2 1 <> 1    => current tag CHANGELOG.md NOT UPDATED
-1 1 1 <> 1    => latest tag CHANGELOG.md NOT UPDATED (WITH UNRELEASED COMMITS LIST ONLY)
+3 2 1 <tag> 1  => CHANGELOG.md NOT UPDATED WITH COMPLETE COMMITS LIST
+3 2 1 <tag> 2  => CHANGELOG.md UPDATED WITH COMPLETE COMMITS LIST
+2 2 1 <> 1     => current tag CHANGELOG.md NOT UPDATED
+1 1 1 <> 1     => latest tag CHANGELOG.md NOT UPDATED (WITH UNRELEASED COMMITS LIST ONLY)
 
 Choose which commits to be processed
 1 - Processes the commits starting from the latest tag
